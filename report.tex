@@ -222,7 +222,12 @@ Because of its simplicity, flat transactions model is very useful in traditional
 
 Advanced transaction models were proposed to enhance the ability to support applications requiring long-living and/or complex transactions. Its fundamental idea is to divide a transaction into sub-transactions according to the semantics of the applications. These sub-transactions (also called component transactions) can again be divided if necessary. The advanced transactions can perform more complex and longer-lasting tasks. For example, when a failure occurs during the execution of a long-living transactional process, the system is able to restart from the middle of the transaction instead of the very beginning.
 
+Failure recovery is a very important topic for transaction processing. To minimize the lost of data, the concept of checkpoints was introduced into transaction [cite]. A checkpoint is a persistent copy of the state of database. In case an error occurs, the state of database can be restored by loading one checkpoint copy, and unfinished operations can be continually executed based on the new copy of database. This technique is widely used among current database systems. Based on checkpoint mechanism, distributed transactions, nested transactions, chained transactions are developed during the 1980s. These models are mostly designed for certain situations.
 
+
+Distributed transactions consist of sub-transactions that may access multiple local database systems. Multi-database systems impose global integrity constraints on a transaction as well as global atomicity and isolation. For example, the whole transaction is aborted if any sub-transaction fails. Nested transactions adopt a top-down method to decompose a complex transaction into sub-transactions according to their functionalities. It overcomes the shortcomings of single-level transactions by permitting parts to fail without necessarily aborting the entire transaction.
+
+\subsection{Workflow transactions}
 
 \section{Transaction Processing in Modern Times}
 \label{sec:modern}
