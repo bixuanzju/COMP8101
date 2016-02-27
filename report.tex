@@ -263,7 +263,7 @@ interoperability between Web services domains. The specifications are
 aimed at the reliable and consistent execution of web based business
 transactions using different interconnected Web services.
 
-\subsubsection{WS-coordination}
+\subsubsection{WS-Coordination}
 \label{sec:wsc}
 
 Web services involve many participants, thus a lot of issues related
@@ -273,16 +273,78 @@ convenient to plug in specific coordination
 protocols~\cite{little2003introducing}.
 
 Three services necessary to support coordination protocols are
-specified in the 
+specified in the framework:
+
+\begin{itemize}
+\item The Activation Service, which creates a new activity coordinator
+  that uses a specific coordination protocol.
+\item The Registration Service, which is responsible for the
+  registration of a new participant and selection of the coordination
+  protocol.
+\item The Coordination Service makes sure that all registered Web
+  services are brought to completion by the selected protocol. The
+  protocol defines the behavior and operations that are required for
+  the completion of an activity.
+\end{itemize}
 
 
-
-\subsubsection{WS-AomicTransaction}
+\subsubsection{WS-AtomicTransaction}
 \label{sec:wsat}
+
+The WS-AtomicTransaction specification focuses on existing transaction
+systems and protocols with strict ACID requirements. Traditionally,
+these systems are heterogeneous, so the first step towards
+interoperability is to couple them with one organization. 
+
+However, just coupling systems doesn't give you interoperability
+between systems of different organizations for free. Many issues arise
+because of the well-known interoperability problems related to
+semantic differences, autonomy, non-disclosure, etc. A simple yet
+valid solution is to wrap the backend systems/application as a Web
+Services.
+
+With WS-AT specification, one is able to offer an application as a Web
+Service, and also specify its transactional behavior (ACID for
+example) in case the service in question is involved in an
+intra-organizational process.
+
+Participants in an WS-AT should support the following requirements
+that assumed by the protocol~\cite{wsat}:
+
+\begin{itemize}
+\item Updates are isolated until they are committed.
+\item There is a single all or nothing decision for all participants.
+\item Any participating systems in the transaction can abort the
+  entire transaction.
+\end{itemize}
+
+As can be seen, this requires a high mutual trust between the
+participants in such a transaction, thus making it hard to be adopted
+for inter-business transactions.
+
 
 \subsubsection{WS-BusinessActivity}
 \label{sec:wsba}
 
+Since the WS-AT specification resembles traditional 2PC ACID
+transactions, it suffers the same problem. To avoid such problems and
+to support long-running business transactions, the business activity
+coordination type has been introduced.
+
+As we know, atomic transactions handle system generated exceptions
+transparently from the application that drives the
+transaction. However the application does not need to care about the
+system generated exception. Instead, it can focus on the handling of
+application generated exceptions. To ensure this, WS-BA uses atomic
+transitions to preserve the autonomy of participating organizations.
+
+Some characteristics of business activities in WS-BA include:
+
+\begin{itemize}
+\item Participants are autonomous and can exit activities at will.
+\item The state of the business activity is made persistent between
+  steps in order to reach a desired goal, even if exceptions occur.
+\end{itemize}
 
 
 \subsection{Grid transactions}
