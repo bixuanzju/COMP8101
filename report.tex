@@ -232,6 +232,66 @@ Distributed transactions consist of sub-transactions that may access multiple lo
 \section{Transaction Processing in Modern Times}
 \label{sec:modern}
 
+Many transaction processing models mentioned in the previous sections
+were invented before the ``Internet age''. With the advent of
+Internet, many new challenges, both theoretical and technical, have
+arisen. In this section, we place our focus on the transaction
+processing models in modern times. Specifically, we cover web service
+transactions in Section~\ref{sec:web}, grid transitions in
+Section~\ref{sec:grid} and mobile transaction models in
+Section~\ref{sec:mobile}.
+
+\subsection{Web service transactions}
+\label{sec:web}
+
+Over the period of late 1990s until now, more and more research
+efforts have been put to the area of transactions in the Web services
+(WS) world. Besides numerous standards such as SOAP~\cite{soap},
+WSDL~\cite{wsdl}, UDDI~\cite{uddi}, etc., a new standard is called for
+to ensure the consistency and reliability of WS
+applications. Currently there are three competing standardization
+efforts. For the space reason, we focus on one candidate, i.e., the
+combined Web Service Transaction specifications, also known as WS-Tx,
+consisting of WS-Coordination (WS-C), WS-AtomicTransaction (WS-AT),
+and WS-BusinessActivity (WS-BA)~\cite{wsc, wsat, wsba}. We briefly
+mention the other two, i.e., the Business Transaction Protocol
+(BTP)~\cite{btp} and Web Services Composite Application Framework
+(WS-CAF)~\cite{wscaf}.
+
+The WS-Tx specifications define mechanisms for transactional
+interoperability between Web services domains. The specifications are
+aimed at the reliable and consistent execution of web based business
+transactions using different interconnected Web services.
+
+\subsubsection{WS-coordination}
+\label{sec:wsc}
+
+Web services involve many participants, thus a lot of issues related
+to Web services require coordination. WS-Coordination provides a
+generic coordination infrastructure for Web services, making it
+convenient to plug in specific coordination
+protocols~\cite{little2003introducing}.
+
+Three services necessary to support coordination protocols are
+specified in the 
+
+
+
+\subsubsection{WS-AomicTransaction}
+\label{sec:wsat}
+
+\subsubsection{WS-BusinessActivity}
+\label{sec:wsba}
+
+
+
+\subsection{Grid transactions}
+\label{sec:grid}
+
+\subsection{Mobile transaction models}
+\label{sec:mobile}
+
+
 
 \section{Problem Definition}
 \label{sec:modern}
