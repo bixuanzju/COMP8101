@@ -238,9 +238,8 @@ were invented before the ``Internet age''. With the advent of
 Internet, many new challenges, both theoretical and technical, have
 arisen. In this section, we place our focus on the transaction
 processing models in modern times. Specifically, we cover web service
-transactions in Section~\ref{sec:web}, grid transitions in
-Section~\ref{sec:grid} and mobile transaction models in
-Section~\ref{sec:mobile}.
+transactions in Section~\ref{sec:web}, and mobile transaction models
+in Section~\ref{sec:mobile}.
 
 \subsection{Web service transactions}
 \label{sec:web}
@@ -348,12 +347,96 @@ Some characteristics of business activities in WS-BA include:
 \end{itemize}
 
 
-\subsection{Grid transactions}
-\label{sec:grid}
+% \subsection{Grid transactions}
+% \label{sec:grid}
+
+% Grid computing is gaining more and more attention recently. Simply
+% put, grid computing is a form of distributed computing that involves
+% coordinating and sharing computing resources across the web globally.
+% In this way, exclusive immense computing power previously only
+% available to a few organizations now available to everyone. However,
+% much research has been focused on infrastructure and middleware, less
+% effort is spent in the area of Grid transactions.
+
+
+
+
 
 \subsection{Mobile transaction models}
 \label{sec:mobile}
 
+The popularity of the Mobile Database is increasing day by day as
+people need information even on the move in the fast changing
+world. Unlike traditional database where data in stored in a central
+place, data in mobile devices are moved closer to the users to improve
+the efficiency and autonomy. The new style creates many motivating
+issues in mobile database research. In this section, we briefly
+present the state-of-the-art of data and transaction management in
+Mobile databases.
+
+Some characteristics of the Mobile Transactions is provided as
+follows:
+
+\begin{itemize}
+\item The Mobile transactions are long-lived transactions due to the
+  mobility of both data and users and due to the frequent
+  disconnection.
+\item The mobile transactions might have to split their computations
+  into sets of operations, some of which execute on MH and others on
+  MSS. A mobile transaction shares their states and partial results
+  with other transactions due to disconnection and mobility.
+\item The mobile transactions require computations and communications
+  to be supported by mobile service stations (MSS).
+\item As the MHs move from one cell to another, the states of
+  transaction, states of accessed data objects, and the location
+  information also moves.
+\item The mobile transactions should support and handle concurrency,
+  recovery, disconnections and mutual consistency of the replicated
+  data objects.
+\end{itemize}
+
+In Mobile Database System Recovery is highly challenging since some of
+the processing nodes are mobile. Other challenges in the recovery
+process include, failures at the fixed network DBMS, limited wireless
+channels, network failure, site failure and handoff
+problems. Solutions to these challenges weaken atomicity or isolation
+levels of transactions. Two types of protocols namely
+\emph{Checkpoint} and \emph{Message Logging} are used for saving the
+execution state of a mobile application, so that when a MH recovers
+from a failure, the mobile application can roll back to the last saved
+consistent state, and restart execution with recovery
+guarantees. Checkpoint and log information are stored at the base
+stations \cite{gadiraju2004recovery} since Mobile Host (MH) disk
+storage is not stable.
+
+\subsubsection{Checkpoint Protocols}
+
+One popular recovery protocol is Timeout protocol, executed by MSS
+which maintains a timer to measure the inactivity period of mobile
+host and initiates rollback for the transaction on
+timeout~\cite{gore2000recovery}. In~\cite{cao2001mutable}, Mutable
+Checkpoint to design efficient checkpointing algorithm is
+introduced. It can be saved anywhere (the memory or local disk of
+MHSs). Taking a mutable checkpoint avoids the overhead of transferring
+large amount of data to stable storage at MSSs over the wireless
+network. The proposed algorithm based on the Mutable Checkpoint is a
+non- blocking algorithm that avoids the avalanche effect and forces
+only a minimum number of processes to take their checkpoints on the
+stable storage.
+
+\subsubsection{Message Logging Protocols}
+
+Ing-Ray Chen et al. report Lazy and Pessimistic schemes
+in~\cite{chen2005failure}. In a lazy scheme, logs are stored in the
+Base station (BS) and if mobile host moves to a new BS, a pointer to
+the old BS gets stored in the new BS. Pointers can be used to recover
+the log distributed over several BS’s. This scheme has the advantage
+that it incurs relatively less network overhead during handoff as no
+log information needs to be transferred. But this scheme has a large
+recovery time. In the pessimistic scheme, the entire log and
+checkpoint record, if any, are transferred at each handoff. Hence, the
+recovery is fast but each handoff requires large volume of data
+transfer.
 
 
 \section{Problem Definition}
