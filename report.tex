@@ -295,7 +295,7 @@ specified in the framework:
 The WS-AtomicTransaction specification focuses on existing transaction
 systems and protocols with strict ACID requirements. Traditionally,
 these systems are heterogeneous, so the first step towards
-interoperability is to couple them with one organization. 
+interoperability is to couple them with one organization.
 
 However, just coupling systems doesn't give you interoperability
 between systems of different organizations for free. Many issues arise
@@ -359,6 +359,7 @@ Some characteristics of business activities in WS-BA include:
 \section{Problem Definition}
 \label{sec:modern}
 
+In the classical model of database transactions, transactions are modelled as atomic and isolated units of work. This model has been widely successful in traditional database applications. However, sometimes transactions must be combined and coordinated with other code or programs to achieve a larger goal. We propose to investigate programming language features for specifying non-classical transactions, which can easily combine transactions with other codes into complex processes. This built-in feature may improve the readability, scalability and performance of transition related programs.
 
 
 % \section{The {\secit Body} of The Paper}
